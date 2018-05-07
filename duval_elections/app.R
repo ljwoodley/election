@@ -42,7 +42,7 @@ ui <- navbarPage("Election Results", theme = shinytheme("flatly"),
                   )
 )
 
-#--------------SERVEER-------------------------------#
+#--------------SERVER-------------------------------#
 server <- function(input, output) {
 
   #create dataset
@@ -102,8 +102,6 @@ server <- function(input, output) {
     
   })
   
-  
-
 }
 
 # Run the application 
