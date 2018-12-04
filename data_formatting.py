@@ -4,7 +4,6 @@ import pandas as pd
 import numpy as np
 
 filename = glob.glob("*.csv")
-
 df = pd.concat([pd.read_csv(i).assign(Year = os.path.basename(i)[16:20])  
                 for i in filename],ignore_index = True)
 
@@ -39,7 +38,6 @@ def sbdcat(x):
 
 df['sbd'] = df['ccd'].apply(sbdcat)
 
-
 df['party'] = np.where(df.party.isin(['DEM','REP']), df.party,'OTH')
 df['candidate_issue'] = np.where(df.party.isin(['DEM','REP']), df.candidate_issue,'OTH')
 
@@ -47,7 +45,6 @@ df.contest.replace(["GOVERNOR AND LIEUTENANT GOVERNOR","MAYOR","United States Pr
                    ["Governor","Mayoral","Presidental"], inplace=True)
 
 df = df.query('contest == "Governor" | contest == "Presidental" |contest == "Mayoral"')
-
 df = df[['year','party', 'contest','ccd','sbd', 'candidate_issue', 'totalvotes']]
 
 #combine year and contest for unique election type
