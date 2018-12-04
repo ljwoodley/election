@@ -46,8 +46,7 @@ df['candidate_issue'] = np.where(df.party.isin(['DEM','REP']), df.candidate_issu
 df.contest.replace(["GOVERNOR AND LIEUTENANT GOVERNOR","MAYOR","United States President and Vice President"],
                    ["Governor","Mayoral","Presidental"], inplace=True)
 
-df = df.query('contest == "Governor" | contest == "Presidental" \
-               |contest == "Mayoral"')
+df = df.query('contest == "Governor" | contest == "Presidental" |contest == "Mayoral"')
 
 df = df[['year','party', 'contest','ccd','sbd', 'candidate_issue', 'totalvotes']]
 
